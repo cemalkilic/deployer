@@ -39,7 +39,7 @@ task('deploy:check_remote', function () {
             $opt = '--heads';
         }
 
-        $remoteLs = runLocally(sprintf("%s ls-remote $opt $repository $ref", get('bin/git')));
+        $remoteLs = run(sprintf("%s ls-remote $opt $repository $ref", get('bin/git')));
         if (strstr($remoteLs, "\n")) {
             throw new Exception("Could not determine target revision. '$ref' matched multiple commits.");
         }
